@@ -16,15 +16,16 @@ class Budget:
     
         print("Enter input expenses in \"Type Cost\" format. For e.g. Milk 10")
         for i in range(nump_expenses):
-            try:
-                type, exp = input(f"Enter expense #{i+1}: ").split()
-                self.expenses.append(float(exp))
-                self.category.append(type)
-                break 
-            except:
-                print(" **ERROR** ")
-                print(" You entered an invalid input. Please enter the expense in \"Type Cost\" format.")
-                print()
+            while True:
+                try:
+                    type, exp = input(f"Enter expense #{i+1}: ").split()
+                    self.expenses.append(float(exp))
+                    self.category.append(type)
+                    break 
+                except:
+                    print(" **ERROR** ")
+                    print(" You entered an invalid input. Please enter the expense in \"Type Cost\" format.")
+                    print()
 
     def get_expenses(self):
         print(f"Total money you spend on {self.expenses_type} is {sum(self.expenses)}")
