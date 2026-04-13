@@ -1,6 +1,5 @@
 def calc_balance(income, expenses):
-    print(f"Your expenses are: {expenses}")
-    balance = income - sum(expenses)
+    balance = income -(expenses)
     return balance
 
 def financial_status(balance):

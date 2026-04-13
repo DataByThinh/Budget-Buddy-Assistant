@@ -1,5 +1,5 @@
 import os
-from library import function
+from library import functions
 from library.classes_8 import Budget
 
 os.system('cls' if os.name == 'nt' else 'clear')
