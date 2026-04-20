@@ -835,25 +835,45 @@ class BudgetBuddyApp:
 
         history = self.data["history"]
 
-        fig, ax = plt.subplots(figsize=(3.0, 2.2), dpi=100)
+        fig, ax = plt.subplots(figsize=(3.4, 2.4), dpi=100)
         fig.patch.set_facecolor("white")
 
         if history:
-            latest = history[-7:]
-            labels = [item["date"][5:10] for item in latest]
-            incomes = [item["income"] for item in latest]
-            expenses = [item["expense"] for item in latest]
+            # lấy snapshot mới nhất cho mỗi ngày
+            daily_data = {}
+            for item in history:
+                day_key = item["date"][:10]   # YYYY-MM-DD
+                daily_data[day_key] = item    # overwrite để giữ snapshot mới nhất trong ngày
 
-            ax.plot(labels, incomes, marker="o", label="Income")
-            ax.plot(labels, expenses, marker="o", label="Expense")
-            ax.set_title("Trend Over Time", fontsize=10, pad=6)
+            sorted_days = sorted(daily_data.keys())
+            labels = [day[5:] for day in sorted_days]   # MM-DD
+            incomes = [daily_data[day]["income"] for day in sorted_days]
+            expenses = [daily_data[day]["expense"] for day in sorted_days]
+
+            ax.plot(labels, incomes, marker="o", linewidth=2, label="Income")
+            ax.plot(labels, expenses, marker="o", linewidth=2, label="Expense")
+
+            ax.set_title("Income vs Expense Trend", fontsize=10, pad=8)
             ax.set_ylabel("Amount ($)", fontsize=8)
-            ax.tick_params(axis="x", rotation=20, labelsize=8)
+            ax.tick_params(axis="x", rotation=25, labelsize=8)
             ax.tick_params(axis="y", labelsize=8)
-            ax.legend(fontsize=7, loc="upper right")
+            ax.legend(fontsize=8, loc="upper left")
+            ax.grid(True, axis="y", alpha=0.3)
+
+            # tránh chart quá chật nếu nhiều ngày
+            if len(labels) > 8:
+                step = max(1, len(labels) // 6)
+                ax.set_xticks(range(0, len(labels), step))
+                ax.set_xticklabels([labels[i] for i in range(0, len(labels), step)])
         else:
-            ax.plot([0], [0])
-            ax.set_title("Trend Over Time", fontsize=10, pad=6)
+            ax.text(
+                0.5, 0.5,
+                "Save snapshots over time\nto see your trend",
+                ha="center", va="center",
+                transform=ax.transAxes,
+                fontsize=9
+            )
+            ax.set_title("Income vs Expense Trend", fontsize=10, pad=8)
             ax.set_xticks([])
             ax.set_yticks([])
 
@@ -861,8 +881,7 @@ class BudgetBuddyApp:
 
         canvas = FigureCanvasTkAgg(fig, master=self.line_frame)
         canvas.draw()
-        chart_widget = canvas.get_tk_widget()
-        chart_widget.pack(fill="both", expand=True)
+        canvas.get_tk_widget().pack(fill="both", expand=True)
 
         plt.close(fig)
 
