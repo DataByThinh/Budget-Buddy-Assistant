@@ -288,7 +288,7 @@ class BudgetBuddyApp:
         app_frame = tk.Frame(self.root, bg="#f5f7fb")
         app_frame.pack(fill="both", expand=True)
 
-        self.sidebar = tk.Frame(app_frame, bg="#0f172a", width=170)
+        self.sidebar = tk.Frame(app_frame, bg="#0f172a", width=240)
         self.sidebar.pack(side="left", fill="y")
         self.sidebar.pack_propagate(False)
 
