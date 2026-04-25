@@ -309,14 +309,14 @@ class BudgetBuddyApp:
         tk.Frame(self.sidebar, bg="#334155", height=1).pack(fill="x", padx=18, pady=(0, 20))
         tk.Label(self.sidebar, text="FEATURES", font=("Helvetica", 10, "bold"), bg="#0f172a", fg="#94a3b8").pack(anchor="w", padx=24, pady=(0, 10))
 
-        self.add_sidebar_item("Dashboard", "⌂", active_page == "Dashboard", self.show_dashboard_page)
-        self.add_sidebar_item("Income", "💵", active_page == "Income", self.show_income_page)
-        self.add_sidebar_item("Expense", "↓", active_page == "Expense", self.show_expense_page)
-        self.add_sidebar_item("Insights & Reports", "▥", active_page == "Insights", self.show_insights_page)
+        self.add_sidebar_item("Dashboard", "📊", active_page == "Dashboard", self.show_dashboard_page)
+        self.add_sidebar_item("Income", "💰", active_page == "Income", self.show_income_page)
+        self.add_sidebar_item("Expense", "💳", active_page == "Expense", self.show_expense_page)
+        self.add_sidebar_item("Insights & Reports", "🔍", active_page == "Insights", self.show_insights_page)
 
         tk.Frame(self.sidebar, bg="#334155", height=1).pack(fill="x", padx=18, pady=(20, 20))
-        self.sidebar_button("Reset All Data", "⌫", bg="#8b1e1e", command=self.reset_user_data).pack(fill="x", padx=18, pady=(0, 18))
-        self.sidebar_button("Log Out", "↪", bg="#334155", command=self.show_login_page).pack(fill="x", padx=18, pady=(0, 20))
+        self.sidebar_button("Reset All Data", "🔄", bg="#8b1e1e", command=self.reset_user_data).pack(fill="x", padx=18, pady=(0, 18))
+        self.sidebar_button("Log Out", "🚪", bg="#334155", command=self.show_login_page).pack(fill="x", padx=18, pady=(0, 20))
 
     def sidebar_button(self, text, icon, bg="#0f172a", active=False, command=None):
         color = "#284a83" if active else bg
@@ -452,7 +452,7 @@ class BudgetBuddyApp:
         tk.Button(btn_row, text="Add Expense", font=("Helvetica", 11, "bold"), bg="#2563eb", fg="white", bd=0, pady=12, command=self.add_expense_item).pack(side="left", fill="x", expand=True, padx=(0, 8))
         tk.Button(btn_row, text="Clear Items", font=("Helvetica", 11, "bold"), bg="#e5e7eb", fg="#111827", bd=0, pady=12, command=self.clear_expense_items).pack(side="left", fill="x", expand=True, padx=(8, 0))
 
-        self.expense_listbox = tk.Listbox(input_card, font=("Helvetica", 10), bd=0, bg="#f3f4f6", fg="#111827", height=3)
+        self.expense_listbox = tk.Listbox(input_card, font=("Helvetica", 10), bd=0, bg="#f3f4f6", fg="#111827", height=2)
         self.expense_listbox.pack(padx=18, fill="x", pady=(0, 14))
 
         tk.Frame(input_card, bg="#e5e7eb", height=1).pack(fill="x", padx=18, pady=(0, 14))
@@ -460,8 +460,8 @@ class BudgetBuddyApp:
 
         save_frame = tk.Frame(input_card, bg="white")
         save_frame.pack(fill="x", padx=18, pady=(0, 18))
-        tk.Button(save_frame, text="Save Snapshot", font=("Helvetica", 11, "bold"), bg="#15803d", fg="white", bd=0, pady=12, command=self.save_snapshot).pack(side="left", fill="x", expand=True, padx=(0, 8))
-        tk.Button(save_frame, text="Load Latest", font=("Helvetica", 11, "bold"), bg="#2563eb", fg="white", bd=0, pady=12, command=self.load_latest_snapshot).pack(side="left", fill="x", expand=True, padx=(8, 0))
+        tk.Button(save_frame, text="Save Snapshot", font=("Helvetica", 11, "bold"), bg="#15803d", fg="white", bd=0, pady=5, command=self.save_snapshot).pack(side="left", fill="x", expand=True, padx=(0, 8))
+        tk.Button(save_frame, text="Load Latest", font=("Helvetica", 11, "bold"), bg="#2563eb", fg="white", bd=0, pady=5, command=self.load_latest_snapshot).pack(side="left", fill="x", expand=True, padx=(8, 0))
 
     def build_feedback_card(self, feedback_card):
         tk.Label(feedback_card, text="Smart Insights", font=("Helvetica", 16, "bold"), bg="white", fg="#111827").pack(anchor="w", padx=22, pady=(18, 18))
@@ -657,7 +657,7 @@ class BudgetBuddyApp:
         text_box.pack(side="left", fill="both", expand=True, padx=(12, 0))
 
         tk.Label(text_box, text=title, font=("Helvetica", 11), bg="white", fg="#374151").pack(anchor="w", pady=(8, 12))
-        value_label = tk.Label(text_box, text=value, font=("Helvetica", 18, "bold"), bg="white", fg=accent_color)
+        value_label = tk.Label(text_box, text=value, font=("Helvetica", 14, "bold"), bg="white", fg=accent_color)
         value_label.pack(anchor="w")
 
         card.value_label = value_label
