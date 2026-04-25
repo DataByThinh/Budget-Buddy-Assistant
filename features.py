@@ -214,9 +214,8 @@ class BudgetBuddyApp:
         card.place(relx=0.5, rely=0.5, anchor="center")
         card.pack_propagate(False)
 
-        tk.Label(card, text="Budget Buddy", font=("Helvetica", 26, "bold"), bg="white", fg="#111827").pack(pady=(35, 8))
-        tk.Label(card, text="A digital wallet for smarter spending", font=("Helvetica", 11), bg="white", fg="#6b7280").pack(pady=(0, 8))
-        tk.Label(card, text="Powered by Connexa", font=("Helvetica", 10, "italic"), bg="white", fg="#9ca3af").pack(pady=(0, 22))
+        tk.Label(card, text="Connexa", font=("Helvetica", 26, "bold"), bg="white", fg="#111827").pack(pady=(35, 8))
+        tk.Label(card, text="Smart Spending, Simplified", font=("Helvetica", 11), bg="white", fg="#6b7280").pack(pady=(0, 8))
 
         tk.Label(card, text="Full Name", font=("Helvetica", 11), bg="white", fg="#374151").pack(anchor="w", padx=45)
         self.name_entry = tk.Entry(card, font=("Helvetica", 12), bd=0, bg="#f3f4f6", fg="#111827")
