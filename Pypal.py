@@ -421,7 +421,7 @@ def show_login():
     card.place(relx=0.5, rely=0.5, anchor="center")
     card.pack_propagate(False)
 
-    tk.Label(card, text="Welcome to Connexa", font=("Helvetica", 26, "bold"),
+    tk.Label(card, text="Welcome to FinHusk", font=("Helvetica", 26, "bold"),
              bg="white").pack(pady=(40, 10))
 
     tk.Label(card, text="Track smarter. Spend better",
@@ -509,7 +509,7 @@ def show_dashboard(name, dob):
               bd=0, padx=18, pady=14,
               command=show_login).pack(fill="x", padx=15)
 
-    tk.Label(main_area, text="Hi, I’m Connexa!",
+    tk.Label(main_area, text="Hi, I’m FinHusk!",
              font=("Helvetica", 30, "bold"), bg="#f5f7fb",
              fg="#111827").pack(anchor="w", padx=35, pady=(30, 8))
 
