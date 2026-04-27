@@ -293,7 +293,7 @@ def show_income_page():
                  bg="#f5f7fb").pack(anchor="w", padx=35)
         return
 
-    fig, ax = plt.subplots(figsize=(8, 4))
+    fig, ax = plt.subplots(figsize=(8, 6))
 
     dates = [item["date"][:10] for item in current_history]
     incomes = [item["income"] for item in current_history]
@@ -306,7 +306,7 @@ def show_income_page():
 
     canvas = FigureCanvasTkAgg(fig, master=main_area)
     canvas.draw()
-    canvas.get_tk_widget().pack(fill="both", expand=True, padx=35, pady=20)
+    canvas.get_tk_widget().pack(padx=35, pady=20)
 
 
 def show_expense_page():
@@ -331,7 +331,7 @@ def show_expense_page():
         amount = item["amount"]
         category_totals[category] = category_totals.get(category, 0) + amount
 
-    fig, ax = plt.subplots(figsize=(8, 4))
+    fig, ax = plt.subplots(figsize=(8, 7))
 
     ax.bar(category_totals.keys(), category_totals.values())
     ax.set_title("Expense by Category")
@@ -341,7 +341,7 @@ def show_expense_page():
 
     canvas = FigureCanvasTkAgg(fig, master=main_area)
     canvas.draw()
-    canvas.get_tk_widget().pack(fill="both", expand=True, padx=35, pady=20)
+    canvas.get_tk_widget().pack(padx=35, pady=20)
 
 def show_insights_report_page():
     show_dashboard(current_name, current_dob)
